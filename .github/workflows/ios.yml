@@ -1,0 +1,79 @@
+name: build-ios
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-15
+    timeout-minutes: 40
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Toolchain
+        run: |
+          set -x
+          xcodebuild -version
+          xcodebuild -showsdks
+          sw_vers
+
+      - name: Build Phoenix (unsigned device build)
+        run: |
+          set -o pipefail
+          xcodebuild \
+            -project PhoenixCodeV.xcodeproj \
+            -scheme Phoenix \
+            -configuration Release \
+            -sdk iphoneos \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath build \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            IPHONEOS_DEPLOYMENT_TARGET=15.0 \
+            build 2>&1 | tee build.log | tail -n 120
+
+      - name: Package IPA
+        run: |
+          set -euo pipefail
+          APP="build/Build/Products/Release-iphoneos/Phoenix.app"
+          test -d "$APP"
+          mkdir -p ipa/Payload
+          cp -R "$APP" ipa/Payload/
+          rm -rf ipa/Payload/Phoenix.app/_CodeSignature
+
+          PB=/usr/libexec/PlistBuddy
+          plist=ipa/Payload/Phoenix.app/Info.plist
+          $PB -c "Set :CFBundleDisplayName 神明之眼" "$plist" 2>/dev/null \
+            || $PB -c "Add :CFBundleDisplayName string 神明之眼" "$plist"
+          $PB -c "Set :CFBundleShortVersionString 1.0" "$plist" 2>/dev/null \
+            || $PB -c "Add :CFBundleShortVersionString string 1.0" "$plist"
+          $PB -c "Set :CFBundleVersion 1" "$plist" 2>/dev/null \
+            || $PB -c "Add :CFBundleVersion string 1" "$plist"
+          $PB -c "Set :PhoenixBuildNote 神明之眼 1.0" "$plist" 2>/dev/null \
+            || $PB -c "Add :PhoenixBuildNote string 神明之眼 1.0" "$plist"
+
+          ( cd ipa && zip -qry "shenming-eye-1.0-unsigned.ipa" Payload -x "*.DS_Store" )
+          ls -lh ipa/*.ipa
+          /usr/bin/shasum -a 256 ipa/*.ipa
+
+      - name: Upload IPA
+        uses: actions/upload-artifact@v4
+        with:
+          name: shenming-eye-ipa
+          path: ipa/*.ipa
+          if-no-files-found: error
+
+      - name: Upload build log (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
+          if-no-files-found: warn

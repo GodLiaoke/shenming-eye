@@ -1,0 +1,172 @@
+﻿name: PhoenixCodeV
+options:
+  minimumXcodeGenVersion: 2.40.0
+  deploymentTarget:
+    iOS: "15.0"
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+targets:
+  Phoenix:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: Resources
+    info:
+      path: Info.plist
+      properties:
+        # 画中画必需：没有 audio 后台模式，App 一退到后台就会被挂起，
+        # 系统小窗会立刻停（同行 RikkaM build50 也是这么配的）。
+        UIBackgroundModes:
+          - audio
+        NSAppTransportSecurity:
+          # ⚠️ 这里**故意不写** NSAllowsLocalNetworking：
+          # iOS 10+ 一旦同时出现新键（LocalNetworking / InWebContent / ForMedia），
+          # 系统会按新键的语义解释，NSAllowsArbitraryLoads 就不再覆盖到 URLSession，
+          # 表现就是「网页能开（走 InWebContent），但激活请求直接 TLS 失败」——2026-10-04 真机实测。
+          # 测试包：连裸 IP + 自签证书必须放开 ATS。
+          NSAllowsArbitraryLoads: true
+          # ⚠️ 这里**故意不再写** NSAllowsArbitraryLoadsInWebContent：
+          # 只要出现这个"新键"，iOS 就改用新语义，NSAllowsArbitraryLoads 对 URLSession 失效
+          # → 表现就是"网页能开、激活报 A TLS error"（2026-10-04 模拟器+真机双向复现）。
+          # 网页（WKWebView）的自签证书改由 RadarWebView 的 didReceive challenge 放行。
+        # 网关地址与测试包开关：打包脚本会用 PlistBuddy 覆盖这两个键。
+        # 验证服务器（卡密验证入口）：源码自带默认值，可用 GATEWAY_ORIGIN 覆盖。
+        PhoenixGatewayOrigin: local
+        PhoenixTestInsecureTLS: "0"
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shenming.eye
+        PRODUCT_NAME: Phoenix
+        PRODUCT_MODULE_NAME: Phoenix
+        ENABLE_TESTABILITY: YES
+        MARKETING_VERSION: 1.0
+        CURRENT_PROJECT_VERSION: 1
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_KEY_CFBundleDisplayName: 神明之眼
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.utilities
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+        INFOPLIST_KEY_NSLocalNetworkUsageDescription: Phoenix CodeV 需要让同一局域网的额外设备浏览实时地图。
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone: "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad: "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight"
+        SUPPORTS_MACCATALYST: NO
+        TARGETED_DEVICE_FAMILY: "1,2"
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS: NO
+        ALWAYS_SEARCH_USER_PATHS: NO
+        SDKROOT: iphoneos
+        SUPPORTED_PLATFORMS: "iphoneos iphonesimulator"
+        "EXCLUDED_ARCHS[sdk=iphonesimulator*]": x86_64
+      configs:
+        Release:
+          ENABLE_TESTABILITY: NO
+          SWIFT_OPTIMIZATION_LEVEL: -O
+          # ⚠️ 别改回 wholemodule。2026-10-09 实测：整模块优化会把
+          # `RadarStatusDot`（雷达页左上角那颗状态点，含它的无障碍标签）
+          # 整块从产物里消掉 —— Swift 侧编译通过、链接通过、App 能跑，
+          # 只有那个视图不见了，而且**只能靠翻二进制字符串才发现**。
+          # singlefile 的代价是编译慢一点，换的是"界面上的东西一定在包里"。
+          SWIFT_COMPILATION_MODE: singlefile
+          GCC_OPTIMIZATION_LEVEL: s
+          DEAD_CODE_STRIPPING: YES
+          DEPLOYMENT_POSTPROCESSING: YES
+          COPY_PHASE_STRIP: YES
+          STRIP_INSTALLED_PRODUCT: YES
+          STRIP_STYLE: all
+          DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
+    entitlements:
+      path: Phoenix.entitlements
+      properties:
+        com.apple.developer.networking.networkextension:
+          - packet-tunnel-provider
+    dependencies:
+      - target: PhoenixTunnel
+      # 本机中继（同一套 Rust：真实流量本机直出 + 副本上云解码）
+      # 旧：云端解密版中继（切换后不再链接）
+      # - framework: Frameworks/PhoenixCloudRelay.xcframework
+      #   embed: false
+      # 云端解密版：本机不链接 CodevMobile（没有解码器）。
+      # 要回本机解密版就把下面这行注释打开，并把 Sources-Legacy-本机解密版/ 的两个文件移回 Sources/。
+      # 新：本机解密版（进程内代理 + 抓包 + 解码）
+      - framework: Frameworks/CodevMobile.xcframework
+        embed: false
+      #   embed: false
+      - sdk: Security.framework
+      - sdk: SystemConfiguration.framework
+      - sdk: libc++.tbd
+      - sdk: libresolv.tbd
+  PhoenixTunnel:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: Tunnel
+      - path: Sources/PanelStreamMonitor.swift
+    info:
+      path: Tunnel/Info.plist
+      properties:
+        CFBundleShortVersionString: "1.2.0"
+        CFBundleVersion: "79"
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.networkextension.packet-tunnel
+          NSExtensionPrincipalClass: $(PRODUCT_MODULE_NAME).GamePacketTunnelProvider
+    entitlements:
+      path: Tunnel/PhoenixTunnel.entitlements
+      properties:
+        com.apple.developer.networking.networkextension:
+          - packet-tunnel-provider
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.shenming.eye.tunnel
+        PRODUCT_NAME: PhoenixTunnel
+        PRODUCT_MODULE_NAME: PhoenixTunnel
+        MARKETING_VERSION: 1.0
+        CURRENT_PROJECT_VERSION: 1
+        ALWAYS_SEARCH_USER_PATHS: NO
+        SWIFT_VERSION: "5.0"
+        IPHONEOS_DEPLOYMENT_TARGET: "15.0"
+        TARGETED_DEVICE_FAMILY: "1,2"
+        GENERATE_INFOPLIST_FILE: NO
+        SDKROOT: iphoneos
+        SUPPORTED_PLATFORMS: "iphoneos iphonesimulator"
+        "EXCLUDED_ARCHS[sdk=iphonesimulator*]": x86_64
+    dependencies:
+      - framework: Frameworks/CodevMobile.xcframework
+        embed: false
+  PhoenixTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: Tests
+    settings:
+      base:
+        PRODUCT_NAME: PhoenixTests
+        PRODUCT_BUNDLE_IDENTIFIER: com.shenming.eye.tests
+        GENERATE_INFOPLIST_FILE: YES
+        SWIFT_VERSION: "5.0"
+        ALWAYS_SEARCH_USER_PATHS: NO
+        "EXCLUDED_ARCHS[sdk=iphonesimulator*]": x86_64
+        TEST_HOST: "$(BUILT_PRODUCTS_DIR)/Phoenix.app/Phoenix"
+        BUNDLE_LOADER: "$(TEST_HOST)"
+        SDKROOT: iphoneos
+        SUPPORTED_PLATFORMS: "iphoneos iphonesimulator"
+    dependencies:
+      - target: Phoenix
+schemes:
+  Phoenix:
+    build:
+      targets:
+        Phoenix: all
+        PhoenixTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - PhoenixTests
+    archive:
+      config: Release

@@ -1,0 +1,769 @@
+﻿// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		01A970B95CD8BAED1E3119B1 /* StatusStrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9D52B5C11977D20D7AB5D6 /* StatusStrip.swift */; };
+		029DEE9ECB8D3FC06588BAEA /* CodevMobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5512FA4C133D687C2ED52FD6 /* CodevMobile.xcframework */; };
+		02BAAD3E04E474A567E5BA6C /* map-1007-fracture.png in Resources */ = {isa = PBXBuildFile; fileRef = 77EB4DA54A8C0E094BD4F33C /* map-1007-fracture.png */; };
+		035E078EF264378D083416EC /* GatewayTransportHintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACABDF7CA68BB82F1036344A /* GatewayTransportHintTests.swift */; };
+		06E62EA3F5BCA5A1F5C94C7F /* SealedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6644087EFE5378C38AF69C /* SealedStore.swift */; };
+		11E2B78418FB8C64EC41E813 /* map-1004-haven.png in Resources */ = {isa = PBXBuildFile; fileRef = DCDAA40EF2A1FF11F7CE1F91 /* map-1004-haven.png */; };
+		1260115B2A31E362E545C817 /* map-1009-pearl.png in Resources */ = {isa = PBXBuildFile; fileRef = 95B871B31719C0D09FCBAF19 /* map-1009-pearl.png */; };
+		1C11D7410AC04E860364D429 /* RadarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 812D9B4A7A08D2CA227E2403 /* RadarContainerView.swift */; };
+		24A0B8D39AC814F47E5A2A2A /* MainConsoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00662915A8E2503F60E2DDF /* MainConsoleView.swift */; };
+		2A1240C56B6784B267C2F7B1 /* map-2-bind.png in Resources */ = {isa = PBXBuildFile; fileRef = 34FB894FB37B298A202EB19D /* map-2-bind.png */; };
+		3A9E201B81B92B67F5E3B207 /* PanelStreamMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87B74D08D3088B460D0BF33 /* PanelStreamMonitor.swift */; };
+		3F1439AF2FB39E5DB2C3A038 /* RadarKeepAlive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3725A14D0E24F493DF4DB5 /* RadarKeepAlive.swift */; };
+		40C63D2066A3728A55B8B7BB /* RoomGrantTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B0ED1F2A910BFF90B52712 /* RoomGrantTests.swift */; };
+		41EACCD1644A02322E2A9E30 /* PiPRadarGeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 104261F4E5C054D385420E6F /* PiPRadarGeometryTests.swift */; };
+		425D62E1E224D75A216F6E8F /* SecurityBoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7647F7B07008308F7602587C /* SecurityBoot.swift */; };
+		426A0B9E5A8AD8A6D5CBC1BB /* map-1013-tianshu-yunque.png in Resources */ = {isa = PBXBuildFile; fileRef = F3B3B35FA1B2415D35659A91 /* map-1013-tianshu-yunque.png */; };
+		45B0D7B2AD9AEF077D4C93EA /* RadarControlMarkupTests.py in Resources */ = {isa = PBXBuildFile; fileRef = DBB75CCE03369E0FA4886E53 /* RadarControlMarkupTests.py */; };
+		45D3469BF5E5751F284D845C /* ProxyDiagnosticsSnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AED9E4B21E92B0DF177BFB0 /* ProxyDiagnosticsSnapshot.swift */; };
+		473827BDE056D76D6295A480 /* BackgroundRuntime.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF24CFFB2037A3B41478194F /* BackgroundRuntime.swift */; };
+		4BB74D2237DCA31E03DAF3BF /* RoomGrant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 672469CE1A8FE275B7D0A79C /* RoomGrant.swift */; };
+		508917CD12529BC6ED6AAB3E /* PiPRadarSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35F8D283C6ECB35C78C7ADBB /* PiPRadarSource.swift */; };
+		50F1AA973F8E602EC5B52C50 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 625579012B91D998A049EEF9 /* libc++.tbd */; };
+		54FAD1A7C333603AF86ACA9D /* map-1012-abyss.png in Resources */ = {isa = PBXBuildFile; fileRef = B0232A93513CAB58D6B93909 /* map-1012-abyss.png */; };
+		5671F4D3549980ECE8D4A8BB /* PhoenixTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6F0E32D044196158E682A /* PhoenixTheme.swift */; };
+		5A8899BC9B9C52FFDA8BC5A5 /* map-1010-lotus.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B5348E4EFF799923D7843ED /* map-1010-lotus.png */; };
+		5DBF8AEE0050C150878277A1 /* GatewayClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A728AE100D29F6D7542342EC /* GatewayClient.swift */; };
+		64DEAD681825D9A2FA4F9204 /* GamePacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A24DCA8ED1279D63A217388 /* GamePacketTunnelProvider.swift */; };
+		6679119A8CD893D55BD33D19 /* RadarWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F3F0E2E61CE6899093BE9FF /* RadarWebView.swift */; };
+		6CF634257C3A7256872B79F3 /* map-1003-icebox.png in Resources */ = {isa = PBXBuildFile; fileRef = 012C7615F78CAE231AE57F95 /* map-1003-icebox.png */; };
+		6E99FB7F05737693DC6963E8 /* map-1011-sunset.png in Resources */ = {isa = PBXBuildFile; fileRef = 40ECFBA723334CA15298E508 /* map-1011-sunset.png */; };
+		74785AAE4517B47CBB5A5E97 /* PiPDiagnostics.swift in Sources */ = {isa = PBXBuildFile; fileRef = F09F50A7785F7D63A0CB50F5 /* PiPDiagnostics.swift */; };
+		773F31F9AD15C4CF035A4C65 /* GatewayObfuscator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422A058FE995DF3F594CEF5E /* GatewayObfuscator.swift */; };
+		7AD43E053DDC06943C0C42D2 /* LanRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8C0B238207671C49E98D31 /* LanRelay.swift */; };
+		7AF230AE98ABBA130151473F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8764B9165F52C838E2CC67 /* SystemConfiguration.framework */; };
+		818065816A113784A1AF386B /* PhoenixApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9EE9865FFC3C5B5A65C91FE /* PhoenixApp.swift */; };
+		88E3FC9C7E695F057D5DAF0C /* LicenseInputTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68DB50EDC166119722FA092E /* LicenseInputTests.swift */; };
+		893FB58A211F59C64848C4E0 /* ActivationReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA6C00683DB3E08DEC54BC09 /* ActivationReporter.swift */; };
+		8AD8907252188C6090DD62C5 /* map-1006-breeze.png in Resources */ = {isa = PBXBuildFile; fileRef = 2428FB9FD716C2CF9E2BCD3E /* map-1006-breeze.png */; };
+		961423172288A456BBB2AA9C /* IntegrityGuard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3545D2830DCB1D97272B2333 /* IntegrityGuard.swift */; };
+		9E6594AAB257C66409A0C295 /* BuildInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C76A0A62207C47D2884AD614 /* BuildInfo.swift */; };
+		9F314996DDABF871A9732B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6FFFFED9E5E75EDA048D9A4 /* Assets.xcassets */; };
+		A179E7F649DEEE01D5553817 /* PhoenixTunnel.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3A2F6A91CD7F47CDBCA84C7F /* PhoenixTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		A47145BD987AA9DA393E7B31 /* LicenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 505714B39FA27321D05EE5EF /* LicenseView.swift */; };
+		AB97AC95861221EB22F1EF70 /* LocalMapServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923016C5AB45E7514BC88DE1 /* LocalMapServer.swift */; };
+		AC0C9AAF9806FE2465FF3254 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BD1E0D210A7A115467EB9B1 /* libresolv.tbd */; };
+		AE86FAC8DDB32DF249DECC92 /* CodevMobile.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5512FA4C133D687C2ED52FD6 /* CodevMobile.xcframework */; };
+		B2FE9EA8CD7C823DB665CF90 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 456046C1CF4A4AC90EABC526 /* Security.framework */; };
+		C027C52161EFEE337D01728A /* GameTrafficController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AC82FE12622A4D29DCD77E /* GameTrafficController.swift */; };
+		C2A8FC7CC94CB637DDB5AB09 /* T3Verify.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F09BC39A1EE1B24DC9088F4 /* T3Verify.swift */; };
+		C4588745613FB3C9A67528A5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC6FE70BD4E62EDEEF064CB /* AppModel.swift */; };
+		C922EBA385E8FB27DDCEAC23 /* RadarCapabilitySnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D8A8684CE6DC998E69B00DD8 /* RadarCapabilitySnapshotTests.swift */; };
+		D18D453B1FDEB98D81BD4D5B /* PiPBackgroundTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 034DAB59C5984C6EF31179BD /* PiPBackgroundTests.swift */; };
+		D3C20162279BC336EDC3FEF9 /* PiPRadarSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77364A0F83B14D6F949605DF /* PiPRadarSourceTests.swift */; };
+		D469E1F7064EA59226EBD214 /* PiPRadarPreviewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC730B2F89CA3CB532EA902D /* PiPRadarPreviewTests.swift */; };
+		D6426CBAC0624BC48DA0992D /* map-1-ascent.png in Resources */ = {isa = PBXBuildFile; fileRef = 46337159E1E3F163899DDAE9 /* map-1-ascent.png */; };
+		D86FC02C8A168E17CD83FE02 /* LocalCodeVEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA72EDE9BD642D98993D2C7 /* LocalCodeVEngine.swift */; };
+		DF3DBAEF38D5AA660B7A9324 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A344B2320928E81C08FE4A4 /* RootView.swift */; };
+		DF8FEC72960B82845EF76C69 /* SessionDictionaryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E2EF0F9A769C34B0CCE4A35 /* SessionDictionaryService.swift */; };
+		DFEFF2FC68940180D3B0A303 /* RadarCapabilitySnapshot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E4C84EAB5410AA0EEE555D /* RadarCapabilitySnapshot.swift */; };
+		E033CF3F2D42874B7C121AF7 /* map-1005-split.png in Resources */ = {isa = PBXBuildFile; fileRef = B7515D11B6B89369C5A908FB /* map-1005-split.png */; };
+		F68088522360372F63629B06 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D09FEF2BCAE9D0CAB4231B3 /* QRCodeView.swift */; };
+		F6A85F42941B90655E79522E /* RadarPiP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27903B4E695C03EB8FA9DBE0 /* RadarPiP.swift */; };
+		F7CAC115D66C91CC78850314 /* PanelStreamMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87B74D08D3088B460D0BF33 /* PanelStreamMonitor.swift */; };
+		F98CFD34112ED931209CED2F /* manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 44F8B8636C99ED5B2CFC3483 /* manifest.json */; };
+		FBD1425FA14D5BAE38C97984 /* KeychainStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8867D9EE6D17F268774C08CF /* KeychainStore.swift */; };
+		FBDE0F274BBED592CE2D1042 /* LocalRelay.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72C14B198A2011C88005356 /* LocalRelay.swift */; };
+		FF920A9984FCB24766319739 /* ProxyDiagnosticsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA7AB286CFC3E923072C6F3 /* ProxyDiagnosticsTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A313979463459AA84D61DB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D539DA73A798A57811B2BDA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC593EFB1D7C2EB90D618134;
+			remoteInfo = Phoenix;
+		};
+		5AC9E6BE1F60EE6BB77DA849 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D539DA73A798A57811B2BDA3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 45D12FFBCD0320D9A5761B19;
+			remoteInfo = PhoenixTunnel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		759744A6375A11AD35D12A5C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A179E7F649DEEE01D5553817 /* PhoenixTunnel.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		012C7615F78CAE231AE57F95 /* map-1003-icebox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1003-icebox.png"; sourceTree = "<group>"; };
+		034DAB59C5984C6EF31179BD /* PiPBackgroundTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPBackgroundTests.swift; sourceTree = "<group>"; };
+		0DB6F0E32D044196158E682A /* PhoenixTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoenixTheme.swift; sourceTree = "<group>"; };
+		104261F4E5C054D385420E6F /* PiPRadarGeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPRadarGeometryTests.swift; sourceTree = "<group>"; };
+		1B5348E4EFF799923D7843ED /* map-1010-lotus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1010-lotus.png"; sourceTree = "<group>"; };
+		1D7E4798F2D18F69AD3584F0 /* PhoenixTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PhoenixTunnel.entitlements; sourceTree = "<group>"; };
+		2428FB9FD716C2CF9E2BCD3E /* map-1006-breeze.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1006-breeze.png"; sourceTree = "<group>"; };
+		27903B4E695C03EB8FA9DBE0 /* RadarPiP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarPiP.swift; sourceTree = "<group>"; };
+		32E4C84EAB5410AA0EEE555D /* RadarCapabilitySnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCapabilitySnapshot.swift; sourceTree = "<group>"; };
+		34FB894FB37B298A202EB19D /* map-2-bind.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-2-bind.png"; sourceTree = "<group>"; };
+		3545D2830DCB1D97272B2333 /* IntegrityGuard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrityGuard.swift; sourceTree = "<group>"; };
+		35F8D283C6ECB35C78C7ADBB /* PiPRadarSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPRadarSource.swift; sourceTree = "<group>"; };
+		3A24DCA8ED1279D63A217388 /* GamePacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePacketTunnelProvider.swift; sourceTree = "<group>"; };
+		3A2F6A91CD7F47CDBCA84C7F /* PhoenixTunnel.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = PhoenixTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D09FEF2BCAE9D0CAB4231B3 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
+		3F3F0E2E61CE6899093BE9FF /* RadarWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarWebView.swift; sourceTree = "<group>"; };
+		3FA7AB286CFC3E923072C6F3 /* ProxyDiagnosticsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyDiagnosticsTests.swift; sourceTree = "<group>"; };
+		40ECFBA723334CA15298E508 /* map-1011-sunset.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1011-sunset.png"; sourceTree = "<group>"; };
+		422A058FE995DF3F594CEF5E /* GatewayObfuscator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayObfuscator.swift; sourceTree = "<group>"; };
+		42AC82FE12622A4D29DCD77E /* GameTrafficController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTrafficController.swift; sourceTree = "<group>"; };
+		440C65537161140B34ECC8BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		44F8B8636C99ED5B2CFC3483 /* manifest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = manifest.json; sourceTree = "<group>"; };
+		456046C1CF4A4AC90EABC526 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		46337159E1E3F163899DDAE9 /* map-1-ascent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1-ascent.png"; sourceTree = "<group>"; };
+		505714B39FA27321D05EE5EF /* LicenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseView.swift; sourceTree = "<group>"; };
+		5512FA4C133D687C2ED52FD6 /* CodevMobile.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = CodevMobile.xcframework; path = Frameworks/CodevMobile.xcframework; sourceTree = "<group>"; };
+		5A3725A14D0E24F493DF4DB5 /* RadarKeepAlive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarKeepAlive.swift; sourceTree = "<group>"; };
+		5BD1E0D210A7A115467EB9B1 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		5E2EF0F9A769C34B0CCE4A35 /* SessionDictionaryService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionDictionaryService.swift; sourceTree = "<group>"; };
+		625579012B91D998A049EEF9 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		672469CE1A8FE275B7D0A79C /* RoomGrant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomGrant.swift; sourceTree = "<group>"; };
+		68DB50EDC166119722FA092E /* LicenseInputTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseInputTests.swift; sourceTree = "<group>"; };
+		6AED9E4B21E92B0DF177BFB0 /* ProxyDiagnosticsSnapshot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyDiagnosticsSnapshot.swift; sourceTree = "<group>"; };
+		6F09BC39A1EE1B24DC9088F4 /* T3Verify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = T3Verify.swift; sourceTree = "<group>"; };
+		7647F7B07008308F7602587C /* SecurityBoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityBoot.swift; sourceTree = "<group>"; };
+		77364A0F83B14D6F949605DF /* PiPRadarSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPRadarSourceTests.swift; sourceTree = "<group>"; };
+		77EB4DA54A8C0E094BD4F33C /* map-1007-fracture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1007-fracture.png"; sourceTree = "<group>"; };
+		7CA26268119D529FDDFA4F90 /* Phoenix.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = Phoenix.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		812D9B4A7A08D2CA227E2403 /* RadarContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarContainerView.swift; sourceTree = "<group>"; };
+		8867D9EE6D17F268774C08CF /* KeychainStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainStore.swift; sourceTree = "<group>"; };
+		88B0ED1F2A910BFF90B52712 /* RoomGrantTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomGrantTests.swift; sourceTree = "<group>"; };
+		8A344B2320928E81C08FE4A4 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		8C6644087EFE5378C38AF69C /* SealedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SealedStore.swift; sourceTree = "<group>"; };
+		923016C5AB45E7514BC88DE1 /* LocalMapServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalMapServer.swift; sourceTree = "<group>"; };
+		95B871B31719C0D09FCBAF19 /* map-1009-pearl.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1009-pearl.png"; sourceTree = "<group>"; };
+		9EA72EDE9BD642D98993D2C7 /* LocalCodeVEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCodeVEngine.swift; sourceTree = "<group>"; };
+		A6FFFFED9E5E75EDA048D9A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A728AE100D29F6D7542342EC /* GatewayClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayClient.swift; sourceTree = "<group>"; };
+		A72C14B198A2011C88005356 /* LocalRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalRelay.swift; sourceTree = "<group>"; };
+		AA6C00683DB3E08DEC54BC09 /* ActivationReporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivationReporter.swift; sourceTree = "<group>"; };
+		ACABDF7CA68BB82F1036344A /* GatewayTransportHintTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GatewayTransportHintTests.swift; sourceTree = "<group>"; };
+		B00662915A8E2503F60E2DDF /* MainConsoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainConsoleView.swift; sourceTree = "<group>"; };
+		B0232A93513CAB58D6B93909 /* map-1012-abyss.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1012-abyss.png"; sourceTree = "<group>"; };
+		B7515D11B6B89369C5A908FB /* map-1005-split.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1005-split.png"; sourceTree = "<group>"; };
+		BC730B2F89CA3CB532EA902D /* PiPRadarPreviewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPRadarPreviewTests.swift; sourceTree = "<group>"; };
+		BF24CFFB2037A3B41478194F /* BackgroundRuntime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundRuntime.swift; sourceTree = "<group>"; };
+		C413819EA98E984AEDC3E6A2 /* PhoenixTests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = PhoenixTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C76A0A62207C47D2884AD614 /* BuildInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildInfo.swift; sourceTree = "<group>"; };
+		CC9D52B5C11977D20D7AB5D6 /* StatusStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusStrip.swift; sourceTree = "<group>"; };
+		D8A8684CE6DC998E69B00DD8 /* RadarCapabilitySnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCapabilitySnapshotTests.swift; sourceTree = "<group>"; };
+		DBB75CCE03369E0FA4886E53 /* RadarControlMarkupTests.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = RadarControlMarkupTests.py; sourceTree = "<group>"; };
+		DCDAA40EF2A1FF11F7CE1F91 /* map-1004-haven.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1004-haven.png"; sourceTree = "<group>"; };
+		DD8C0B238207671C49E98D31 /* LanRelay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanRelay.swift; sourceTree = "<group>"; };
+		DF8764B9165F52C838E2CC67 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EEC6FE70BD4E62EDEEF064CB /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		F09F50A7785F7D63A0CB50F5 /* PiPDiagnostics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PiPDiagnostics.swift; sourceTree = "<group>"; };
+		F3B3B35FA1B2415D35659A91 /* map-1013-tianshu-yunque.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map-1013-tianshu-yunque.png"; sourceTree = "<group>"; };
+		F87B74D08D3088B460D0BF33 /* PanelStreamMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelStreamMonitor.swift; sourceTree = "<group>"; };
+		F9EE9865FFC3C5B5A65C91FE /* PhoenixApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoenixApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0EE942E1F07EBFE146DC58DC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				029DEE9ECB8D3FC06588BAEA /* CodevMobile.xcframework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6873D47B2826B7A574706F36 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AE86FAC8DDB32DF249DECC92 /* CodevMobile.xcframework in Frameworks */,
+				B2FE9EA8CD7C823DB665CF90 /* Security.framework in Frameworks */,
+				7AF230AE98ABBA130151473F /* SystemConfiguration.framework in Frameworks */,
+				50F1AA973F8E602EC5B52C50 /* libc++.tbd in Frameworks */,
+				AC0C9AAF9806FE2465FF3254 /* libresolv.tbd in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		291820AAFC7254F477234454 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7CA26268119D529FDDFA4F90 /* Phoenix.app */,
+				C413819EA98E984AEDC3E6A2 /* PhoenixTests.xctest */,
+				3A2F6A91CD7F47CDBCA84C7F /* PhoenixTunnel.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3CB3F1A76EE6B07FC4B10BEA /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				44F8B8636C99ED5B2CFC3483 /* manifest.json */,
+				46337159E1E3F163899DDAE9 /* map-1-ascent.png */,
+				34FB894FB37B298A202EB19D /* map-2-bind.png */,
+				012C7615F78CAE231AE57F95 /* map-1003-icebox.png */,
+				DCDAA40EF2A1FF11F7CE1F91 /* map-1004-haven.png */,
+				B7515D11B6B89369C5A908FB /* map-1005-split.png */,
+				2428FB9FD716C2CF9E2BCD3E /* map-1006-breeze.png */,
+				77EB4DA54A8C0E094BD4F33C /* map-1007-fracture.png */,
+				95B871B31719C0D09FCBAF19 /* map-1009-pearl.png */,
+				1B5348E4EFF799923D7843ED /* map-1010-lotus.png */,
+				40ECFBA723334CA15298E508 /* map-1011-sunset.png */,
+				B0232A93513CAB58D6B93909 /* map-1012-abyss.png */,
+				F3B3B35FA1B2415D35659A91 /* map-1013-tianshu-yunque.png */,
+			);
+			path = Maps;
+			sourceTree = "<group>";
+		};
+		3F845F52C0FD13220940123A /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				AA6C00683DB3E08DEC54BC09 /* ActivationReporter.swift */,
+				EEC6FE70BD4E62EDEEF064CB /* AppModel.swift */,
+				BF24CFFB2037A3B41478194F /* BackgroundRuntime.swift */,
+				C76A0A62207C47D2884AD614 /* BuildInfo.swift */,
+				42AC82FE12622A4D29DCD77E /* GameTrafficController.swift */,
+				A728AE100D29F6D7542342EC /* GatewayClient.swift */,
+				422A058FE995DF3F594CEF5E /* GatewayObfuscator.swift */,
+				3545D2830DCB1D97272B2333 /* IntegrityGuard.swift */,
+				8867D9EE6D17F268774C08CF /* KeychainStore.swift */,
+				DD8C0B238207671C49E98D31 /* LanRelay.swift */,
+				505714B39FA27321D05EE5EF /* LicenseView.swift */,
+				9EA72EDE9BD642D98993D2C7 /* LocalCodeVEngine.swift */,
+				923016C5AB45E7514BC88DE1 /* LocalMapServer.swift */,
+				A72C14B198A2011C88005356 /* LocalRelay.swift */,
+				B00662915A8E2503F60E2DDF /* MainConsoleView.swift */,
+				F87B74D08D3088B460D0BF33 /* PanelStreamMonitor.swift */,
+				F9EE9865FFC3C5B5A65C91FE /* PhoenixApp.swift */,
+				0DB6F0E32D044196158E682A /* PhoenixTheme.swift */,
+				F09F50A7785F7D63A0CB50F5 /* PiPDiagnostics.swift */,
+				35F8D283C6ECB35C78C7ADBB /* PiPRadarSource.swift */,
+				6AED9E4B21E92B0DF177BFB0 /* ProxyDiagnosticsSnapshot.swift */,
+				3D09FEF2BCAE9D0CAB4231B3 /* QRCodeView.swift */,
+				32E4C84EAB5410AA0EEE555D /* RadarCapabilitySnapshot.swift */,
+				812D9B4A7A08D2CA227E2403 /* RadarContainerView.swift */,
+				5A3725A14D0E24F493DF4DB5 /* RadarKeepAlive.swift */,
+				27903B4E695C03EB8FA9DBE0 /* RadarPiP.swift */,
+				3F3F0E2E61CE6899093BE9FF /* RadarWebView.swift */,
+				672469CE1A8FE275B7D0A79C /* RoomGrant.swift */,
+				8A344B2320928E81C08FE4A4 /* RootView.swift */,
+				8C6644087EFE5378C38AF69C /* SealedStore.swift */,
+				7647F7B07008308F7602587C /* SecurityBoot.swift */,
+				5E2EF0F9A769C34B0CCE4A35 /* SessionDictionaryService.swift */,
+				CC9D52B5C11977D20D7AB5D6 /* StatusStrip.swift */,
+				6F09BC39A1EE1B24DC9088F4 /* T3Verify.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		5889E146E6C7F175C29F5C44 = {
+			isa = PBXGroup;
+			children = (
+				C846B0CC5369A2DFF197FB86 /* Resources */,
+				3F845F52C0FD13220940123A /* Sources */,
+				E0BBD5E54C0D6448B01D7D6A /* Tests */,
+				EA4A7AA1C7214CB7B07319AC /* Tunnel */,
+				84673EA508A80D2634F79FE6 /* Frameworks */,
+				291820AAFC7254F477234454 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		84673EA508A80D2634F79FE6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5512FA4C133D687C2ED52FD6 /* CodevMobile.xcframework */,
+				625579012B91D998A049EEF9 /* libc++.tbd */,
+				5BD1E0D210A7A115467EB9B1 /* libresolv.tbd */,
+				456046C1CF4A4AC90EABC526 /* Security.framework */,
+				DF8764B9165F52C838E2CC67 /* SystemConfiguration.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C846B0CC5369A2DFF197FB86 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A6FFFFED9E5E75EDA048D9A4 /* Assets.xcassets */,
+				3CB3F1A76EE6B07FC4B10BEA /* Maps */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E0BBD5E54C0D6448B01D7D6A /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				ACABDF7CA68BB82F1036344A /* GatewayTransportHintTests.swift */,
+				68DB50EDC166119722FA092E /* LicenseInputTests.swift */,
+				034DAB59C5984C6EF31179BD /* PiPBackgroundTests.swift */,
+				104261F4E5C054D385420E6F /* PiPRadarGeometryTests.swift */,
+				BC730B2F89CA3CB532EA902D /* PiPRadarPreviewTests.swift */,
+				77364A0F83B14D6F949605DF /* PiPRadarSourceTests.swift */,
+				3FA7AB286CFC3E923072C6F3 /* ProxyDiagnosticsTests.swift */,
+				D8A8684CE6DC998E69B00DD8 /* RadarCapabilitySnapshotTests.swift */,
+				DBB75CCE03369E0FA4886E53 /* RadarControlMarkupTests.py */,
+				88B0ED1F2A910BFF90B52712 /* RoomGrantTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		EA4A7AA1C7214CB7B07319AC /* Tunnel */ = {
+			isa = PBXGroup;
+			children = (
+				3A24DCA8ED1279D63A217388 /* GamePacketTunnelProvider.swift */,
+				440C65537161140B34ECC8BF /* Info.plist */,
+				1D7E4798F2D18F69AD3584F0 /* PhoenixTunnel.entitlements */,
+			);
+			path = Tunnel;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		45D12FFBCD0320D9A5761B19 /* PhoenixTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 06C53B771A0688444FE0C4DD /* Build configuration list for PBXNativeTarget "PhoenixTunnel" */;
+			buildPhases = (
+				B9BEEB2DCAD438D70EDE2A5D /* Sources */,
+				0EE942E1F07EBFE146DC58DC /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PhoenixTunnel;
+			packageProductDependencies = (
+			);
+			productName = PhoenixTunnel;
+			productReference = 3A2F6A91CD7F47CDBCA84C7F /* PhoenixTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		6294CA30A50A219DE2BBF070 /* PhoenixTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B1A342DC1317B43F460C244 /* Build configuration list for PBXNativeTarget "PhoenixTests" */;
+			buildPhases = (
+				874BD4DB6262E1D9DC4C94CA /* Sources */,
+				5EB10FDE19A8CC6BC414360B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B87726D24586EE5F9CF88FF6 /* PBXTargetDependency */,
+			);
+			name = PhoenixTests;
+			packageProductDependencies = (
+			);
+			productName = PhoenixTests;
+			productReference = C413819EA98E984AEDC3E6A2 /* PhoenixTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BC593EFB1D7C2EB90D618134 /* Phoenix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7CFD37803FBDD4E964FF4DAB /* Build configuration list for PBXNativeTarget "Phoenix" */;
+			buildPhases = (
+				5888F8E21FA42F3D98C62102 /* Sources */,
+				2DA5F8ADACCD073BB94A27CC /* Resources */,
+				6873D47B2826B7A574706F36 /* Frameworks */,
+				759744A6375A11AD35D12A5C /* Embed Foundation Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CB5CFB493E7100ABFF075A4 /* PBXTargetDependency */,
+			);
+			name = Phoenix;
+			packageProductDependencies = (
+			);
+			productName = Phoenix;
+			productReference = 7CA26268119D529FDDFA4F90 /* Phoenix.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D539DA73A798A57811B2BDA3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+				};
+			};
+			buildConfigurationList = CDBFD7448DD5A8AE9B3646AE /* Build configuration list for PBXProject "PhoenixCodeV" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 5889E146E6C7F175C29F5C44;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 291820AAFC7254F477234454 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC593EFB1D7C2EB90D618134 /* Phoenix */,
+				45D12FFBCD0320D9A5761B19 /* PhoenixTunnel */,
+				6294CA30A50A219DE2BBF070 /* PhoenixTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2DA5F8ADACCD073BB94A27CC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9F314996DDABF871A9732B68 /* Assets.xcassets in Resources */,
+				DAC64B62782812D6C8E5D354 /* PiPRadarSource.swift.bak-1027-045704-pip in Resources */,
+				F98CFD34112ED931209CED2F /* manifest.json in Resources */,
+				D6426CBAC0624BC48DA0992D /* map-1-ascent.png in Resources */,
+				6CF634257C3A7256872B79F3 /* map-1003-icebox.png in Resources */,
+				11E2B78418FB8C64EC41E813 /* map-1004-haven.png in Resources */,
+				E033CF3F2D42874B7C121AF7 /* map-1005-split.png in Resources */,
+				8AD8907252188C6090DD62C5 /* map-1006-breeze.png in Resources */,
+				02BAAD3E04E474A567E5BA6C /* map-1007-fracture.png in Resources */,
+				1260115B2A31E362E545C817 /* map-1009-pearl.png in Resources */,
+				5A8899BC9B9C52FFDA8BC5A5 /* map-1010-lotus.png in Resources */,
+				6E99FB7F05737693DC6963E8 /* map-1011-sunset.png in Resources */,
+				54FAD1A7C333603AF86ACA9D /* map-1012-abyss.png in Resources */,
+				426A0B9E5A8AD8A6D5CBC1BB /* map-1013-tianshu-yunque.png in Resources */,
+				2A1240C56B6784B267C2F7B1 /* map-2-bind.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5EB10FDE19A8CC6BC414360B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45B0D7B2AD9AEF077D4C93EA /* RadarControlMarkupTests.py in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5888F8E21FA42F3D98C62102 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				893FB58A211F59C64848C4E0 /* ActivationReporter.swift in Sources */,
+				C4588745613FB3C9A67528A5 /* AppModel.swift in Sources */,
+				473827BDE056D76D6295A480 /* BackgroundRuntime.swift in Sources */,
+				9E6594AAB257C66409A0C295 /* BuildInfo.swift in Sources */,
+				C027C52161EFEE337D01728A /* GameTrafficController.swift in Sources */,
+				5DBF8AEE0050C150878277A1 /* GatewayClient.swift in Sources */,
+				773F31F9AD15C4CF035A4C65 /* GatewayObfuscator.swift in Sources */,
+				961423172288A456BBB2AA9C /* IntegrityGuard.swift in Sources */,
+				FBD1425FA14D5BAE38C97984 /* KeychainStore.swift in Sources */,
+				7AD43E053DDC06943C0C42D2 /* LanRelay.swift in Sources */,
+				A47145BD987AA9DA393E7B31 /* LicenseView.swift in Sources */,
+				D86FC02C8A168E17CD83FE02 /* LocalCodeVEngine.swift in Sources */,
+				AB97AC95861221EB22F1EF70 /* LocalMapServer.swift in Sources */,
+				FBDE0F274BBED592CE2D1042 /* LocalRelay.swift in Sources */,
+				24A0B8D39AC814F47E5A2A2A /* MainConsoleView.swift in Sources */,
+				F7CAC115D66C91CC78850314 /* PanelStreamMonitor.swift in Sources */,
+				818065816A113784A1AF386B /* PhoenixApp.swift in Sources */,
+				5671F4D3549980ECE8D4A8BB /* PhoenixTheme.swift in Sources */,
+				74785AAE4517B47CBB5A5E97 /* PiPDiagnostics.swift in Sources */,
+				508917CD12529BC6ED6AAB3E /* PiPRadarSource.swift in Sources */,
+				45D3469BF5E5751F284D845C /* ProxyDiagnosticsSnapshot.swift in Sources */,
+				F68088522360372F63629B06 /* QRCodeView.swift in Sources */,
+				DFEFF2FC68940180D3B0A303 /* RadarCapabilitySnapshot.swift in Sources */,
+				1C11D7410AC04E860364D429 /* RadarContainerView.swift in Sources */,
+				3F1439AF2FB39E5DB2C3A038 /* RadarKeepAlive.swift in Sources */,
+				F6A85F42941B90655E79522E /* RadarPiP.swift in Sources */,
+				6679119A8CD893D55BD33D19 /* RadarWebView.swift in Sources */,
+				4BB74D2237DCA31E03DAF3BF /* RoomGrant.swift in Sources */,
+				DF3DBAEF38D5AA660B7A9324 /* RootView.swift in Sources */,
+				06E62EA3F5BCA5A1F5C94C7F /* SealedStore.swift in Sources */,
+				425D62E1E224D75A216F6E8F /* SecurityBoot.swift in Sources */,
+				DF8FEC72960B82845EF76C69 /* SessionDictionaryService.swift in Sources */,
+				01A970B95CD8BAED1E3119B1 /* StatusStrip.swift in Sources */,
+				C2A8FC7CC94CB637DDB5AB09 /* T3Verify.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		874BD4DB6262E1D9DC4C94CA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035E078EF264378D083416EC /* GatewayTransportHintTests.swift in Sources */,
+				88E3FC9C7E695F057D5DAF0C /* LicenseInputTests.swift in Sources */,
+				D18D453B1FDEB98D81BD4D5B /* PiPBackgroundTests.swift in Sources */,
+				41EACCD1644A02322E2A9E30 /* PiPRadarGeometryTests.swift in Sources */,
+				D469E1F7064EA59226EBD214 /* PiPRadarPreviewTests.swift in Sources */,
+				D3C20162279BC336EDC3FEF9 /* PiPRadarSourceTests.swift in Sources */,
+				FF920A9984FCB24766319739 /* ProxyDiagnosticsTests.swift in Sources */,
+				C922EBA385E8FB27DDCEAC23 /* RadarCapabilitySnapshotTests.swift in Sources */,
+				40C63D2066A3728A55B8B7BB /* RoomGrantTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9BEEB2DCAD438D70EDE2A5D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64DEAD681825D9A2FA4F9204 /* GamePacketTunnelProvider.swift in Sources */,
+				3A9E201B81B92B67F5E3B207 /* PanelStreamMonitor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0CB5CFB493E7100ABFF075A4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 45D12FFBCD0320D9A5761B19 /* PhoenixTunnel */;
+			targetProxy = 5AC9E6BE1F60EE6BB77DA849 /* PBXContainerItemProxy */;
+		};
+		B87726D24586EE5F9CF88FF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC593EFB1D7C2EB90D618134 /* Phoenix */;
+			targetProxy = 0A313979463459AA84D61DB1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		082AA09C277BC6FE8CAFB75F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		15B281709C1ED63B7AA2A5B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Phoenix.entitlements;
+				COPY_PHASE_STRIP = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEPLOYMENT_POSTPROCESSING = YES;
+				ENABLE_TESTABILITY = NO;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GCC_OPTIMIZATION_LEVEL = s;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "神明之眼";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "神明之眼 需要让同一局域网的额外设备浏览实时地图。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenming.eye;
+				PRODUCT_MODULE_NAME = Phoenix;
+				PRODUCT_NAME = Phoenix;
+				SDKROOT = iphoneos;
+				STRIP_INSTALLED_PRODUCT = YES;
+				STRIP_STYLE = all;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_COMPILATION_MODE = singlefile;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		25723CC2ECB09E65BAFC5FDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Tunnel/PhoenixTunnel.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Tunnel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenming.eye.tunnel;
+				PRODUCT_MODULE_NAME = PhoenixTunnel;
+				PRODUCT_NAME = PhoenixTunnel;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		2BC0FAD71FC3344F3DD9487A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		445530B21D5B74F560986925 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenming.eye.tests;
+				PRODUCT_NAME = PhoenixTests;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Phoenix.app/Phoenix";
+			};
+			name = Debug;
+		};
+		99E2792D528E556A24591093 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = Tunnel/PhoenixTunnel.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = Tunnel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenming.eye.tunnel;
+				PRODUCT_MODULE_NAME = PhoenixTunnel;
+				PRODUCT_NAME = PhoenixTunnel;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9EA1A41A696EA3AA6A57B735 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_ASSET_SYMBOLS = NO;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Phoenix.entitlements;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_TESTABILITY = YES;
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"Frameworks\"",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "神明之眼";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "神明之眼 需要让同一局域网的额外设备浏览实时地图。";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenming.eye;
+				PRODUCT_MODULE_NAME = Phoenix;
+				PRODUCT_NAME = Phoenix;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C335CF251BFED994CB6FE255 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = x86_64;
+				GENERATE_INFOPLIST_FILE = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shenming.eye.tests;
+				PRODUCT_NAME = PhoenixTests;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Phoenix.app/Phoenix";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		06C53B771A0688444FE0C4DD /* Build configuration list for PBXNativeTarget "PhoenixTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				99E2792D528E556A24591093 /* Debug */,
+				25723CC2ECB09E65BAFC5FDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		3B1A342DC1317B43F460C244 /* Build configuration list for PBXNativeTarget "PhoenixTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				445530B21D5B74F560986925 /* Debug */,
+				C335CF251BFED994CB6FE255 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		7CFD37803FBDD4E964FF4DAB /* Build configuration list for PBXNativeTarget "Phoenix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9EA1A41A696EA3AA6A57B735 /* Debug */,
+				15B281709C1ED63B7AA2A5B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		CDBFD7448DD5A8AE9B3646AE /* Build configuration list for PBXProject "PhoenixCodeV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2BC0FAD71FC3344F3DD9487A /* Debug */,
+				082AA09C277BC6FE8CAFB75F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D539DA73A798A57811B2BDA3 /* Project object */;
+}
