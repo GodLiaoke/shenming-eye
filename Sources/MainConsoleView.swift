@@ -1,4 +1,4 @@
-import SwiftUI
+﻿import SwiftUI
 import UIKit
 
 /// **主界面 = 先选使用方式，再配置与连接。**
@@ -103,8 +103,10 @@ struct MainConsoleView: View {
         .background(PhoenixBackground())
         .overlay(alignment: .bottom) { toastOverlay }
         .onAppear {
-            guard selectedMode == nil,
-                  let mode = RadarUsageMode(rawValue: storedMode) else { return }
+            guard selectedMode == nil else { return }
+            // 第一次启动（或旧包没存过模式）默认落到「单设备」：
+            // 底部「进入游戏模式」必须一开始就在，不能让人对着页面找不到按钮。
+            let mode = RadarUsageMode(rawValue: storedMode) ?? .singleDevice
             selectedMode = mode
             model.selectUsageMode(mode)
         }
@@ -233,18 +235,49 @@ struct MainConsoleView: View {
     }
 
     private var tacticalLauncher: some View {
-        HStack(spacing: 10) {
-            Button(action: engineReady ? onEnterSelectedMode : onStartConnection) {
+        VStack(spacing: 8) {
+            // 引擎没起来时这里说**具体原因**，并且给一颗重试；不再只是"点了没反应"。
+            if case let .fault(reason) = flow {
+                HStack(spacing: 8) {
+                    Image(systemName: "exclamationmark.triangle.fill")
+                        .font(.system(size: 13, weight: .bold))
+                        .foregroundStyle(PhoenixTheme.signalFault)
+                    Text(model.relayError ?? reason)
+                        .font(PhoenixType.captionStrong)
+                        .foregroundStyle(PhoenixTheme.signalFault)
+                        .lineLimit(3)
+                        .fixedSize(horizontal: false, vertical: true)
+                    Spacer(minLength: 6)
+                    Button("重试引擎") {
+                        Task { await model.startRelay(for: grant) }
+                    }
+                    .font(PhoenixType.captionStrong)
+                    .foregroundStyle(PhoenixTheme.accent)
+                    .padding(.horizontal, 12)
+                    .frame(minHeight: 34)
+                    .glassCapsule()
+                    .buttonStyle(.plain)
+                }
+                .padding(.horizontal, 14)
+                .padding(.vertical, 10)
+                .glassPanel(cornerRadius: 14)
+                .padding(.horizontal, 18)
+            }
+
+            HStack(spacing: 10) {
+            // 主按钮**永远**是「进入游戏模式」：引擎没就绪也照进雷达，
+            // 进页面后由本页面自己的错误态说明原因，绝不会点了没反应。
+            Button(action: onEnterSelectedMode) {
                 HStack(spacing: 10) {
-                    Image(systemName: engineReady ? "gamecontroller.fill" : "link.badge.plus")
+                    Image(systemName: "gamecontroller.fill")
                         .font(.system(size: 20, weight: .bold))
-                    Text(engineReady ? launcherTitle : "启动节点")
+                    Text(launcherTitle)
                         .font(.system(size: 17, design: .rounded).weight(.bold))
                     Spacer(minLength: 6)
                     Text(launcherDetail)
                         .font(PhoenixType.captionStrong)
                         .opacity(0.72)
-                    Image(systemName: engineReady ? (selectedMode == .singleDevice ? "pip.enter" : "arrow.right") : "arrow.clockwise")
+                    Image(systemName: selectedMode == .singleDevice ? "pip.enter" : "arrow.right")
                         .font(.system(size: 12, weight: .bold))
                 }
                 .foregroundStyle(Color.white)
@@ -252,15 +285,18 @@ struct MainConsoleView: View {
                 .frame(maxWidth: .infinity)
                 .frame(minHeight: 56)
                 .background(
-                    engineReady
-                        ? AnyShapeStyle(LinearGradient(colors: [PhoenixTheme.accent, PhoenixTheme.auroraViolet], startPoint: .topLeading, endPoint: .bottomTrailing))
-                        : AnyShapeStyle(LinearGradient(colors: [PhoenixTheme.auroraViolet, PhoenixTheme.auroraPink], startPoint: .topLeading, endPoint: .bottomTrailing)),
+                    AnyShapeStyle(LinearGradient(colors: [PhoenixTheme.accent, PhoenixTheme.auroraViolet], startPoint: .topLeading, endPoint: .bottomTrailing)),
                     in: RoundedRectangle(cornerRadius: 18, style: .continuous)
                 )
+                .overlay(
+                    RoundedRectangle(cornerRadius: 18, style: .continuous)
+                        .strokeBorder(Color.white.opacity(0.55), lineWidth: 1)
+                )
+                .shadow(color: PhoenixTheme.accent.opacity(0.28), radius: 16, y: 8)
             }
             .buttonStyle(.plain)
-            .accessibilityLabel(engineReady ? launcherTitle : "启动节点")
-            .accessibilityHint(engineReady ? launcherHint : "先启动算法服务")
+            .accessibilityLabel(launcherTitle)
+            .accessibilityHint(launcherHint)
 
             if selectedMode == .singleDevice && RadarPiPController.isSupported {
                 Button { pip.toggle(webView: webBox.webView) } label: {
@@ -274,6 +310,7 @@ struct MainConsoleView: View {
                 .buttonStyle(.plain)
                 .accessibilityLabel(pip.isActive ? "退出画中画" : "画中画")
                 .accessibilityHint("在其他 App 上方继续查看本机雷达")
+            }
             }
         }
         .padding(.horizontal, 18)
@@ -306,7 +343,7 @@ struct MainConsoleView: View {
     }
 
     private var launcherDetail: String {
-        if !engineReady { return "连接成功后进入" }
+        if !engineReady { return "引擎未就绪也能进" }
         if selectedMode == .dualDevice { return model.lanIPAddress.map { "B 设备连接 \($0)" } ?? "等待局域网地址" }
         if model.shadowrocketFallback { return "小火箭已就绪" }
         return deviceConnected ? "全屏低延迟" : "等待游戏流量"

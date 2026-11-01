@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import UIKit
 
 @MainActor
@@ -371,7 +371,10 @@ final class AppModel: ObservableObject {
         // （流量从本机直出，只抓一份副本在实时算法处理）。
         lanIPAddress = LocalAddressProvider.currentIPv4()
         let controller = GameTrafficController.shared
-        let restored = controller.state.isConnected ? true : await controller.restore()
+        // ⚠️ restore() 走 NETunnelProviderManager.loadAllFromPreferences：没有 Network
+        // Extension 能力的签名包上，这一步可能迟迟不回调。绝不能让"启动本机引擎"
+        // 卡在这里 —— 卡住的表现就是客户点了按钮什么都没发生。
+        let restored = controller.state.isConnected ? true : await restoreTunnelWithTimeout()
         guard operation == relayOperationID, !Task.isCancelled else { return }
         let status: Int32
         if restored, let access = controller.access {
@@ -453,6 +456,20 @@ final class AppModel: ObservableObject {
         }
     }
 
+    /// 给隧道恢复加一个硬超时：2.5 秒内没结论就当"没有已连接的隧道"，
+    /// 直接起本机引擎。宁可多起一个进程内引擎，也不能让主界面看起来没反应。
+    private func restoreTunnelWithTimeout() async -> Bool {
+        await withTaskGroup(of: Bool.self) { group in
+            group.addTask { @MainActor in await GameTrafficController.shared.restore() }
+            group.addTask {
+                try? await Task.sleep(nanoseconds: 2_500_000_000)
+                return false
+            }
+            let first = await group.next() ?? false
+            group.cancelAll()
+            return first
+        }
+    }
     /// 启动 A 的游戏流量路径。
     /// 普通全能签版本优先使用“小火箭 + 127.0.0.1:2025”，不再把
     /// Network Extension/VPN 设置页作为前置条件；带完整能力的签名包仍可

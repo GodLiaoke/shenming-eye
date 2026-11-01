@@ -1,4 +1,4 @@
-import Foundation
+﻿import Foundation
 import NetworkExtension
 
 /// A 手机的主链路。引擎运行在 Packet Tunnel 扩展进程中，不依赖主界面留在前台。
@@ -20,6 +20,9 @@ final class GameTrafficController: ObservableObject {
     private var manager: NETunnelProviderManager?
     private var statusObserver: NSObjectProtocol?
     private var operationID: UInt64 = 0
+
+    /// 扩展 bundle id 由主包派生：改包名后这里必须跟着走，否则永远找不到自己的隧道配置。
+    static var providerBundleID: String { (Bundle.main.bundleIdentifier ?? "com.shenming.eye") + ".tunnel" }
 
     private init() {
         statusObserver = NotificationCenter.default.addObserver(
@@ -71,7 +74,7 @@ final class GameTrafficController: ObservableObject {
             self.manager = manager
             if manager.connection.status != .connected {
                 let configuration = NETunnelProviderProtocol()
-                configuration.providerBundleIdentifier = "com.myrader.val.codev.tunnel"
+                configuration.providerBundleIdentifier = Self.providerBundleID
                 configuration.serverAddress = "Phoenix CodeV 本机游戏通道"
                 var options: [String: Any] = ["advertisedHost": advertisedHost]
                 if let uploadURL { options["uploadURL"] = uploadURL.absoluteString }
@@ -131,7 +134,7 @@ final class GameTrafficController: ObservableObject {
         let managers = try await NETunnelProviderManager.loadAllFromPreferences()
         return managers.first { manager in
             (manager.protocolConfiguration as? NETunnelProviderProtocol)?.providerBundleIdentifier
-                == "com.myrader.val.codev.tunnel"
+                == Self.providerBundleID
         } ?? NETunnelProviderManager()
     }
 
