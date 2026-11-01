@@ -64,6 +64,12 @@ struct RadarWebView: UIViewRepresentable {
                          injectionTime: .atDocumentStart,
                          forMainFrameOnly: true)
         )
+        // 换皮：白色液态玻璃（只动 CSS，不动页面逻辑）。
+        configuration.userContentController.addUserScript(
+            WKUserScript(source: Self.radarSkinScript,
+                         injectionTime: .atDocumentStart,
+                         forMainFrameOnly: true)
+        )
         // 雷达页在手机上是"贴着边缘铺满"的，别让 WebView 自己留白。
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = context.coordinator
@@ -136,6 +142,53 @@ struct RadarWebView: UIViewRepresentable {
         try { remember(value); unlock(value); } catch (ignore) {}
         return value;
       };
+    })();
+    """
+    /// 神明之眼 · 雷达页白色液态玻璃皮肤（运行时注入，不改引擎二进制）。
+    ///
+    /// 页面自带 104 KB 深色 CSS，但颜色几乎全走 :root 变量；覆盖变量 + 20 条
+    /// 结构规则即可整页换皮，并隐藏只给开发看的「引擎指标 / 操作」诊断块。
+    /// 底图画布保持深色（地图与标记对比度不动）。
+    static let radarSkinScript = """
+    (function () {
+      var CSS = `  :root{color-scheme:light !important;
+    --bg:#eef2f8;--bg-raised:#ffffff;--panel:rgba(255,255,255,.80);--panel-solid:#ffffff;
+    --panel-soft:rgba(255,255,255,.62);--line:rgba(20,23,37,.10);--line-strong:rgba(20,23,37,.18);
+    --text:#141725;--muted:#6d7587;--dim:#8b93a3;--good:#14a369;--warn:#d88c14;--bad:#e03b57;
+    --blue:#2b6cff;--red:#e03b57;--accent:#2b3160;--accent-strong:#4a4f8a;
+    --shadow:0 18px 44px rgba(20,23,37,.12);--shadow-1:0 1px 2px rgba(20,23,37,.08),0 2px 8px rgba(20,23,37,.06);
+    --shadow-2:0 8px 28px rgba(20,23,37,.10);--shadow-3:0 24px 60px rgba(20,23,37,.16);
+    --surface-night:#eef2f8;--surface-indigo:#ffffff}
+  html,body{background:#eef2f8 !important;color:#141725 !important}
+  body{background:radial-gradient(circle at 12% 0,rgba(124,103,246,.26) 0,transparent 42%),radial-gradient(circle at 92% 100%,rgba(113,199,246,.24) 0,transparent 46%),linear-gradient(160deg,#ffffff 0,#eef2f8 62%) !important}
+  header,aside,footer,.map-panel{background:rgba(255,255,255,.76) !important;border-color:rgba(255,255,255,.92) !important;color:#141725 !important;backdrop-filter:blur(18px) saturate(1.15);box-shadow:0 12px 32px rgba(20,23,37,.10) !important}
+  header{background:linear-gradient(180deg,rgba(255,255,255,.94),rgba(255,255,255,.60)) !important}
+  h1,.section-title,.player-name,.metric b,.operation-name{color:#141725 !important}
+  .sub,.status,.player-detail,.health,.metric span,.operation-detail,.operation-state,.time-labels,.privacy,.map-label{color:#6d7587 !important}
+  .player{background:rgba(255,255,255,.68) !important;border-color:rgba(20,23,37,.08) !important;box-shadow:0 6px 18px rgba(20,23,37,.06) !important}
+  .player[aria-pressed="true"]{background:rgba(43,49,96,.10) !important;border-color:rgba(43,49,96,.28) !important}
+  .swatch{border-color:rgba(20,23,37,.14) !important}
+  button,select,input{background:rgba(255,255,255,.92) !important;color:#2b3160 !important;border-color:rgba(20,23,37,.14) !important;box-shadow:0 4px 14px rgba(20,23,37,.06) !important}
+  button:hover{background:#ffffff !important;border-color:rgba(43,49,96,.34) !important}
+  .metric,.operation,.timeline{background:rgba(255,255,255,.62) !important;border-color:rgba(20,23,37,.08) !important}
+  .metrics,.operations{display:none !important}
+  canvas{background:#0b0f16 !important;border-radius:18px}
+  .map-panel{border-radius:22px;overflow:hidden}
+  #toast,.auth-card{background:rgba(255,255,255,.94) !important;color:#141725 !important;border:1px solid rgba(255,255,255,.95) !important;box-shadow:0 20px 48px rgba(20,23,37,.16) !important}
+  ::-webkit-scrollbar{width:10px}::-webkit-scrollbar-thumb{background:rgba(20,23,37,.14);border-radius:8px}`;
+      function apply() {
+        try {
+          if (document.getElementById('shenming-skin')) return;
+          var style = document.createElement('style');
+          style.id = 'shenming-skin';
+          style.textContent = CSS;
+          (document.head || document.documentElement).appendChild(style);
+        } catch (ignore) {}
+      }
+      apply();
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', apply, { once: true });
+      }
     })();
     """
     static func mapRewriteScript(base: String) -> String {
