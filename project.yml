@@ -1,4 +1,4 @@
-﻿name: PhoenixCodeV
+name: PhoenixCodeV
 options:
   minimumXcodeGenVersion: 2.40.0
   deploymentTarget:

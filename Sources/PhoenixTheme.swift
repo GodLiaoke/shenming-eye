@@ -1,4 +1,4 @@
-﻿import SwiftUI
+import SwiftUI
 
 /// 设计系统 v3（2026-10-09 · 主界面 / 全屏雷达两界面重构）。
 ///

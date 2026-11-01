@@ -1,4 +1,4 @@
-﻿import SwiftUI
+import SwiftUI
 import UIKit
 
 /// **主界面 = 先选使用方式，再配置与连接。**
