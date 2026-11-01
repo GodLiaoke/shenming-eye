@@ -1,4 +1,4 @@
-import SwiftUI
+﻿import SwiftUI
 import WebKit
 
 /// 让外层能拿到内部那个 WKWebView（画中画要定期抓它的快照）。
@@ -52,6 +52,18 @@ struct RadarWebView: UIViewRepresentable {
                              forMainFrameOnly: true)
             )
         }
+        // 神明之眼 1.0：英雄身份放行。
+        // 引擎已经把 roster 里的 agent_id 贴到每个位置上（codev-web 的
+        // attach_roster_identity），但页面只在 identity_confidence == "proven"
+        // 时才肯用 agent_id / display_name —— 敌人那五格在阵营 commit 之前是
+        // "unresolved"，于是"有英雄编号也显示不出英雄"。这里在页面脚本之前
+        // 包一层 JSON.parse：只把**已带 agent_id 的位置**标成 proven 并补昵称，
+        // 坐标/阵营/连续性的可信度一概不动。
+        configuration.userContentController.addUserScript(
+            WKUserScript(source: Self.heroIdentityScript,
+                         injectionTime: .atDocumentStart,
+                         forMainFrameOnly: true)
+        )
         // 雷达页在手机上是"贴着边缘铺满"的，别让 WebView 自己留白。
         let webView = WKWebView(frame: .zero, configuration: configuration)
         webView.navigationDelegate = context.coordinator
@@ -75,6 +87,57 @@ struct RadarWebView: UIViewRepresentable {
     /// **只改写具体地图文件**；`/api/v1/maps/manifest` 清单仍走云端 ——
     /// 这样以后换地图、加地图，清单能跟着云端更新，不必重发 App。
     /// 服务未就绪时不注入本脚本，页面行为与改动前完全一致（可安全回退）。
+    /// 英雄身份放行脚本（注入在页面脚本之前）。
+    ///
+    /// 只做两件事：
+    ///   ① 把 `map_roster` 里的 `slot → display_name` 缓存下来；
+    ///   ② 给 `position_delta` / `snapshot` 里**已经带 agent_id 的位置**打上
+    ///      `identity_confidence = "proven"` 并补上昵称。
+    ///
+    /// 为什么必须打这个补丁：页面 `zt()` 里写死
+    /// `agent_id: "proven" === identity_confidence ? … : null`，
+    /// 而引擎只有在阵营 commit 后才把位置标 proven，敌人前几秒是 unresolved
+    /// → 英雄头像/名称整块被丢掉（界面上就是"没有英雄"）。
+    /// 这里只放行"英雄身份"这一项；坐标、阵营、continuity 全部原样不动，
+    /// 所以不会把未确认的位置画成已确认。
+    static let heroIdentityScript = """
+    (function () {
+      var ROSTER = Object.create(null);
+      function remember(obj) {
+        if (!obj || obj.kind !== "map_roster") return;
+        var list = obj.payload && obj.payload.roster;
+        if (!Array.isArray(list)) return;
+        for (var i = 0; i < list.length; i++) {
+          var e = list[i];
+          if (!e) continue;
+          if (Number.isInteger(e.slot) && typeof e.display_name === "string" && e.display_name) {
+            ROSTER[e.slot] = e.display_name;
+          }
+        }
+      }
+      function unlock(obj) {
+        if (!obj || typeof obj !== "object") return;
+        if (obj.kind !== "position_delta" && obj.kind !== "snapshot") return;
+        var list = obj.payload && obj.payload.positions;
+        if (!Array.isArray(list)) return;
+        for (var i = 0; i < list.length; i++) {
+          var p = list[i];
+          if (!p || typeof p !== "object") continue;
+          if (typeof p.agent_id !== "number" || !(p.agent_id > 0)) continue;
+          var name = ROSTER[p.slot];
+          if (!p.display_name && name) p.display_name = name;
+          if (p.identity_confidence !== "proven") p.identity_confidence = "proven";
+        }
+      }
+      var original = JSON.parse;
+      if (typeof original !== "function") return;
+      window.JSON.parse = function (text, reviver) {
+        var value = original.call(this, text, reviver);
+        try { remember(value); unlock(value); } catch (ignore) {}
+        return value;
+      };
+    })();
+    """
     static func mapRewriteScript(base: String) -> String {
         """
         (function () {
